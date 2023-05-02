@@ -4,10 +4,6 @@
 	backdrop-filter: blur(5px);
 	min-height: 100vh;
 	color: white;
-
-	span {
-		color: #a7a9a4;
-	}
 }
 
 .login-form {
@@ -21,4 +17,22 @@
 	background-color: rgba(0, 0, 0, 0.2);
 	backdrop-filter: blur(20px);
 	-webkit-backdrop-filter: blur(20px);
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.animatedGradient {
+	background: linear-gradient(to-right, #1a161f, #2b2433);
+	background-size: 200% 200%;
+	animation: gradient 10s ease-in-out infinite;
 }

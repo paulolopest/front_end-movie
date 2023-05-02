@@ -5,7 +5,7 @@ import LoginSignup from './LoginSignup/LoginSignup';
 
 const Login = () => {
 	return (
-		<section className="login-container">
+		<section className="login-container animatedGradient">
 			<div className="login-form">
 				<Routes>
 					<Route path="/" element={<LoginPage />}></Route>
