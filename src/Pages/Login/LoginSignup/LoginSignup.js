@@ -3,6 +3,7 @@ import useForm from '../../../Hooks/useForm';
 import { UserContext } from '../../../Context/UserContext';
 import Input from '../../../Components/CustomInput/Input';
 import Button from '../../../Components/CustomButton/Button';
+import { Link } from 'react-router-dom';
 
 const LoginSignup = () => {
 	const username = useForm();
@@ -18,8 +19,8 @@ const LoginSignup = () => {
 	};
 
 	return (
-		<section>
-			<h1>Signup</h1>
+		<section className="login-box">
+			<h1 className="title">Create Account</h1>
 
 			<form onSubmit={handleSubmit}>
 				<Input label="Username" type="text" name="username" {...username} />
@@ -31,8 +32,18 @@ const LoginSignup = () => {
 					{...password}
 				/>
 
-				{loading ? <Button>Sending...</Button> : <Button>Send</Button>}
+				{loading ? (
+					<Button>Registering...</Button>
+				) : (
+					<Button>Register</Button>
+				)}
 			</form>
+
+			<div className="login-box-nav">
+				<span>
+					Already have an account? <Link to="/login/">Log in</Link>{' '}
+				</span>
+			</div>
 
 			{error && <p>{error}</p>}
 		</section>

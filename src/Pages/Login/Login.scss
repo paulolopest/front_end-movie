@@ -1,6 +1,6 @@
 .login-container {
 	display: flex;
-	background-image: linear-gradient(120deg, #1a161f, #2b2433);
+	background-image: linear-gradient(120deg, #1a161f, #201b26, #2b2433);
 	backdrop-filter: blur(5px);
 	min-height: 100vh;
 	color: white;
@@ -9,7 +9,7 @@
 .login-form {
 	display: grid;
 	grid-template-columns: 13% 74% 13%;
-	grid-template-rows: 15% auto auto;
+	grid-template-rows: 10% auto auto;
 	margin: auto;
 	border-radius: 6px;
 	width: 28rem;
@@ -32,7 +32,7 @@
 }
 
 .animatedGradient {
-	background: linear-gradient(to-right, #1a161f, #2b2433);
+	background: linear-gradient(120deg, #1a161f, #201b26, #2b2433);
 	background-size: 200% 200%;
-	animation: gradient 10s ease-in-out infinite;
+	animation: gradient 15s ease-in-out infinite;
 }
