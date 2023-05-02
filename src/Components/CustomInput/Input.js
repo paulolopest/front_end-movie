@@ -2,7 +2,7 @@ import React from 'react';
 
 const Input = ({ label, value, name, onChange, error, onBlur, type }) => {
 	return (
-		<div>
+		<div className="custom-input">
 			<label htmlFor={name}>{label}</label>
 			<input
 				id={name}

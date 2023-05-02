@@ -21,7 +21,7 @@ const LoginPage = () => {
 
 	return (
 		<section className="login-box">
-			<h1>Login</h1>
+			<h1 className="title">Sign In</h1>
 
 			<form onSubmit={handleSubmit}>
 				<Input label="Username" type="text" name="username" {...username} />
@@ -31,18 +31,19 @@ const LoginPage = () => {
 					name="password"
 					{...password}
 				/>
+
 				{loading ? (
 					<Button disabled>Sending...</Button>
 				) : (
-					<Button>Send</Button>
+					<Button>Sign in</Button>
 				)}
 			</form>
-			{error && <p>{error}</p>}
-
 			<div className="login-box-nav">
-				<Link to="/login/forgot-password">Forgot Password?</Link>
-				<Link to="/login/signup">Signup</Link>
+				<span>
+					New here? <Link to="/login/signup">Register</Link>{' '}
+				</span>
 			</div>
+			{/* {error && <p>{error}</p>} */}
 		</section>
 	);
 };

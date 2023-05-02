@@ -1,12 +1,19 @@
 .login-box {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	grid-column: 2/3;
+	grid-row: 2/3;
+
+	h1 {
+		margin-bottom: 2rem;
+	}
 }
 
 .login-box-nav {
 	display: flex;
-	justify-content: space-between;
+	align-items: center;
+	justify-content: flex-end;
+
 	a {
 		color: white;
 	}

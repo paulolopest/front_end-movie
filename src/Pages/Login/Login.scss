@@ -1,18 +1,24 @@
 .login-container {
 	display: flex;
-	background: url('https://noticiasdatv.uol.com.br/media/_versions/artigos_2021/casimiro-miguel-sbt-tnt-sports-reproducao-twitch-grande_PEzh2EU_fixed_large.jpg')
-		no-repeat center;
-	background-size: cover;
+	background-image: linear-gradient(120deg, #1a161f, #2b2433);
+	backdrop-filter: blur(5px);
 	min-height: 100vh;
 	color: white;
+
+	span {
+		color: #a7a9a4;
+	}
 }
 
 .login-form {
 	display: grid;
-	justify-content: center;
-	align-items: center;
+	grid-template-columns: 13% 74% 13%;
+	grid-template-rows: 15% auto auto;
 	margin: auto;
-	background: rgba(0, 0, 0, 0.7);
-	width: 30rem;
-	height: 35rem;
+	border-radius: 6px;
+	width: 28rem;
+	height: 38rem;
+	background-color: rgba(0, 0, 0, 0.2);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
 }

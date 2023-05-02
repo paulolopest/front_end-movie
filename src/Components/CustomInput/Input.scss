@@ -1,0 +1,29 @@
+.custom-input {
+	display: flex;
+	flex-direction: column;
+
+	label {
+		display: block;
+		font-size: 1rem;
+		line-height: 1;
+		margin-bottom: 0.5rem;
+	}
+
+	input {
+		display: block;
+		width: 100%;
+		font-size: 1rem;
+		padding: 0.8rem 0;
+		margin-bottom: 1.5rem;
+		outline: none;
+		background: transparent;
+		border: none;
+		border-bottom: 1px solid #eee;
+		color: white;
+
+		&:hover,
+		&:active {
+			border-bottom: 1px solid white;
+		}
+	}
+}
