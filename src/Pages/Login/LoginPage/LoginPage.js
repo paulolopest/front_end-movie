@@ -9,14 +9,11 @@ const LoginPage = () => {
 	const username = useForm();
 	const password = useForm('password');
 
-	const { userLogin, error, loading } = React.useContext(UserContext);
+	const { userLogin, loading, error } = React.useContext(UserContext);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-
-		if (username.validate() && password.validate()) {
-			userLogin(username.value, password.value);
-		}
+		userLogin(username.value, password.value);
 	};
 
 	return (
@@ -49,7 +46,7 @@ const LoginPage = () => {
 				</span>
 			</div>
 
-			{/* {error && <p>{error}</p>} */}
+			{error && <p>{error}</p>}
 		</section>
 	);
 };

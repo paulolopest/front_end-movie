@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
+import { GET_REQUEST_TOKEN, USER_LOGIN } from './../Request/Api';
+import useFetch from '../Hooks/useFetch';
 
 export const UserContext = React.createContext();
 
@@ -9,84 +11,30 @@ const UserStorage = ({ children }) => {
 	const [error, setError] = React.useState(null);
 	const [login, setLogin] = React.useState(null);
 
+	// const sessionId =
+
 	const navigate = useNavigate();
 
-	const getUser = async () => {
-		const response = JSON.parse(window.localStorage.getItem('user-movies'));
-		setData(response);
-	};
+	const getUser = async () => {};
 
 	const userLogin = async (username, password) => {
 		try {
 			setError(null);
 			setLoading(true);
 
-			const LSName = window.localStorage.getItem('name-movies');
-			const LSPassword = window.localStorage.getItem('password-movies');
-
-			if (username !== LSName || password !== LSPassword)
-				throw new Error('Invalid Credentials');
-
-			await getUser();
-
-			navigate('/');
+			const { url, options } = GET_REQUEST_TOKEN();
 		} catch (err) {
 			setError(err.message);
-			setLoading(false);
 		} finally {
 			setLoading(false);
 		}
 	};
 
-	const userLogout = React.useCallback(() => {
-		window.localStorage.removeItem('user-movies');
-		window.localStorage.removeItem('name-movies');
-		window.localStorage.removeItem('password-movies');
+	const userLogout = React.useCallback(() => {}, []);
 
-		navigate('/login');
-	}, [navigate]);
+	const userSignup = async (username, email, password) => {};
 
-	const userSignup = async (username, email, password) => {
-		try {
-			setError(null);
-			setLoading(true);
-
-			window.localStorage.setItem('name-movies', username);
-			window.localStorage.setItem('email-movies', email);
-			window.localStorage.setItem('password-movies', password);
-
-			userLogin(username, password);
-
-			navigate('/');
-		} catch (err) {
-			setError(err.message);
-			setLoading(false);
-		} finally {
-			setLoading(false);
-		}
-	};
-
-	React.useEffect(() => {
-		const autoLogin = async () => {
-			const user = window.localStorage.getItem('user-movies');
-
-			if (user) {
-				try {
-					setError(null);
-					setLoading(true);
-					setLogin(true);
-
-					await getUser();
-				} catch (error) {
-					userLogout();
-				} finally {
-					setLoading(false);
-				}
-			}
-		};
-
-		autoLogin();
-	}, [userLogout]);
+	React.useEffect(() => {}, []);
 
 	return (
 		<UserContext.Provider

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 
 const useFetch = () => {
@@ -6,17 +5,24 @@ const useFetch = () => {
 	const [loading, setLoading] = React.useState(null);
 	const [error, setError] = React.useState(null);
 
-	const request = React.useCallback(async (url) => {
+	const request = React.useCallback(async (url, options) => {
+		let response;
+		let json;
 		try {
+			setError(null);
 			setLoading(true);
 
-			const response = await axios.get(url);
+			response = await fetch(url, options);
+			json = await response.json();
 
-			setData(response.data);
+			if (response.ok === false) throw new Error(json.message);
 		} catch (err) {
 			setError(err.message);
 		} finally {
+			setData(json);
 			setLoading(false);
+
+			return { json, response };
 		}
 	}, []);
 
