@@ -9,11 +9,11 @@ const LoginPage = () => {
 	const username = useForm();
 	const password = useForm('password');
 
-	const { userLogin, loading, error } = React.useContext(UserContext);
+	const { loading, error, userLogin } = React.useContext(UserContext);
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
-		userLogin(username.value, password.value);
+		await userLogin(username.value, password.value);
 	};
 
 	return (

@@ -1,7 +1,5 @@
-import { useNavigate } from 'react-router-dom';
 import React from 'react';
-import { GET_REQUEST_TOKEN, USER_LOGIN } from './../Request/Api';
-import useFetch from '../Hooks/useFetch';
+import { GET_REQUEST_TOKEN } from '../Request/UserRequest';
 
 export const UserContext = React.createContext();
 
@@ -11,18 +9,14 @@ const UserStorage = ({ children }) => {
 	const [error, setError] = React.useState(null);
 	const [login, setLogin] = React.useState(null);
 
-	// const sessionId =
-
-	const navigate = useNavigate();
-
-	const getUser = async () => {};
-
 	const userLogin = async (username, password) => {
 		try {
 			setError(null);
 			setLoading(true);
 
 			const { url, options } = GET_REQUEST_TOKEN();
+			const response = await fetch(url, options);
+			const resJson = await response.json();
 		} catch (err) {
 			setError(err.message);
 		} finally {
@@ -30,24 +24,8 @@ const UserStorage = ({ children }) => {
 		}
 	};
 
-	const userLogout = React.useCallback(() => {}, []);
-
-	const userSignup = async (username, email, password) => {};
-
-	React.useEffect(() => {}, []);
-
 	return (
-		<UserContext.Provider
-			value={{
-				userLogin,
-				userLogout,
-				userSignup,
-				loading,
-				error,
-				login,
-				data,
-			}}
-		>
+		<UserContext.Provider value={{ userLogin }}>
 			{children}
 		</UserContext.Provider>
 	);
