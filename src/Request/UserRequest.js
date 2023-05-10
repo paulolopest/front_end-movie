@@ -9,3 +9,24 @@ export const GET_REQUEST_TOKEN = () => {
 		},
 	};
 };
+
+export const USER_LOGIN = (body) => {
+	return {
+		url: `${BASE_URL}/authentication/token/validate_with_login?api_key=${API_KEY}`,
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(body),
+	};
+};
+
+export const GET_SESSION_ID = (body) => {
+	return {
+		url: `${BASE_URL}/authentication/session/new?api_key=${API_KEY}`,
+		headers: {
+			method: 'POST',
+			'Content-type': 'application/json',
+		},
+		body: JSON.stringify(body),
+	};
+};
