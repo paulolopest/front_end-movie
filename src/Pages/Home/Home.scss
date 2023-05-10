@@ -1,7 +1,7 @@
 .home-container {
 	display: grid;
 	min-height: calc(100vh - 4rem);
-	grid-template-columns: 15% 65% 20%;
+	grid-template-columns: 15vw 62vw 23vw;
 }
 
 .home-left-bar {
@@ -54,7 +54,6 @@
 
 .home-main-content {
 	grid-column: 2/3;
-	background-color: lightpink;
 }
 
 .home-right-bar {

@@ -8,8 +8,10 @@ import Header from './Components/Header/Header';
 const App = () => {
 	return (
 		<BrowserRouter>
-			<Header />
-			<Router />
+			<div className="App">
+				<Header />
+				<Router />
+			</div>
 		</BrowserRouter>
 	);
 };
