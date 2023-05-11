@@ -1,7 +1,8 @@
 .home-container {
 	display: grid;
-	min-height: calc(100vh - 4rem);
-	grid-template-columns: 15vw 62vw 23vw;
+	min-height: calc(100vh - 8vh);
+	width: 100vw;
+	grid-template-columns: 1.5fr 6.2fr 2.3fr;
 }
 
 .home-left-bar {
@@ -52,10 +53,8 @@
 	transition: 0.3s ease-in-out;
 }
 
-.home-main-content {
-	grid-column: 2/3;
-}
-
 .home-right-bar {
-	background-color: lightgreen;
+	display: flex;
+	width: 23vw;
+	background-color: none;
 }

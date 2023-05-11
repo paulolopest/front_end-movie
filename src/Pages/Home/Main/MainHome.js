@@ -1,9 +1,7 @@
 import React from 'react';
-import useFetch from './../../../Hooks/useFetch';
 import TrendingCard from './TrendingCard/TrendingCard';
 
 const MainHome = () => {
-	const { data, loading, error, request } = useFetch();
 	return (
 		<section className="mainHome-container">
 			<TrendingCard />

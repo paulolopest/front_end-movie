@@ -38,7 +38,7 @@ const Home = () => {
 					<Route path="help" element={<HelpHome />} />
 				</Routes>
 			</div>
-			<section className="home-right-bar"></section>
+			<section className="home-right-bar">abc</section>
 		</div>
 	);
 };
