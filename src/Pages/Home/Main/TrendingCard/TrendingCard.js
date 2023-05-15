@@ -8,13 +8,15 @@ import useAxios from '../../../../Hooks/useAxios';
 import { POSTER_URL } from './../../../../Request/ConfigRequests';
 
 const TrendingCard = () => {
-	const [imageIndex, setImageIndex] = useState(2);
+	const [imageIndex, setImageIndex] = useState(1);
 
 	const getTrending = useAxios();
 	const getGenres = useAxios();
 
 	const topRated = getTrending.data;
+
 	const genres = getGenres?.data?.genres;
+	const genresIds = getTrending.data?.results[imageIndex].genre_ids;
 
 	const filmGenres = [];
 
@@ -30,20 +32,21 @@ const TrendingCard = () => {
 			getGenres.axiosGet(url, options);
 		};
 		getAllGenres();
+	}, []);
 
-		const genresIds = getTrending.data?.results[imageIndex].genre_ids;
-
-		const getFilmGenres = () => {
-			for (let i = 0; i < genresIds?.length; i++) {
-				for (let j = 0; j < genres?.length; j++) {
-					if (genresIds[i] === genres[j].id) {
-						filmGenres.push(genres[j].name);
-					}
+	const getFilmGenres = () => {
+		for (let i = 0; i < genresIds?.length; i++) {
+			for (let j = 0; j < genres?.length; j++) {
+				if (genresIds[i] === genres[j].id) {
+					filmGenres.push(genres[j].name);
 				}
 			}
-		};
-		getFilmGenres();
-	}, []);
+		}
+	};
+
+	getFilmGenres();
+
+	console.log(filmGenres);
 
 	const cardImage = {
 		backgroundImage: `url(${BASE_IMAGE_URL}/${topRated?.results[imageIndex]?.backdrop_path})`,
@@ -56,15 +59,21 @@ const TrendingCard = () => {
 				<div className="tc-card-backImage" style={cardImage}>
 					<div className="tc-card">
 						<img
-							src={`${POSTER_URL}/${topRated.results[imageIndex]?.poster_path}`}
-							alt=""
 							className="tc-poster-image"
+							alt={`${topRated.results[imageIndex]?.name}' poster`}
+							src={`${POSTER_URL}/${topRated.results[imageIndex]?.poster_path}`}
 						></img>
 						<div>
 							<h2>{topRated.results[imageIndex]?.name}</h2>
 							<p>Ano / duration</p>
-							<p className="tc-film-description">Descriptions</p>
-							<div className="tc-card-genres">genres</div>
+							<p className="tc-film-description">
+								{topRated.results[imageIndex]?.overview}
+							</p>
+							<div className="tc-card-genres">
+								{filmGenres.map((movie, index) => (
+									<p key={index}>{movie}</p>
+								))}
+							</div>
 							<div className="tc-card-buttons">
 								<button>Trailer</button>
 								<button>Watch Movie</button>
