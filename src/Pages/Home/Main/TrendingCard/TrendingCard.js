@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../../../../Assets/Icons/1f525.gif';
 import {
 	BASE_IMAGE_URL,
 	GET_GENRES,
@@ -8,7 +9,7 @@ import useAxios from '../../../../Hooks/useAxios';
 import { POSTER_URL } from './../../../../Request/ConfigRequests';
 
 const TrendingCard = () => {
-	const [currentCard, setCurrentCard] = useState(1);
+	const [currentCard, setCurrentCard] = useState(7);
 
 	const getTrending = useAxios();
 	const getGenres = useAxios();
@@ -55,6 +56,7 @@ const TrendingCard = () => {
 		poster: `${POSTER_URL}/${topRated?.results[currentCard].poster_path}`,
 		description: topRated?.results[currentCard].overview,
 		year: topRated?.results[currentCard].first_air_date,
+		genres: filmGenres.map((movie, index) => <p key={index}>{movie}</p>),
 	};
 
 	const limitDescription = (text) => {
@@ -65,54 +67,47 @@ const TrendingCard = () => {
 		}
 	};
 
-	console.log(topRated);
-
 	if (getTrending.loading || getGenres.loading) return <p>Loading...</p>;
 	if (topRated)
 		return (
 			<div className="trending-content">
-				<div className="tc-card-backImage" style={cardImage}>
-					<div className="tc-card">
-						<img
-							className="tc-poster-image"
-							alt={`${card.name}' poster`}
-							src={card.poster}
-						></img>
-						<div className="tc-card-box-description">
-							<h2 className="title">{card.name}</h2>
-							<p>{card.year.slice(0, 4)}</p>
-							<p className="tc-film-description">
-								{limitDescription(card.description)}
-							</p>
-							<div className="tc-card-genres">
-								{filmGenres.map((movie, index) => (
-									<p key={index}>{movie}</p>
-								))}
-							</div>
-							<div className="tc-card-buttons">
-								<button>Trailer</button>
-								<button>Details</button>
+				<h1>Trending </h1>
+
+				<div className="tc-mainContent">
+					<div className="backCardImage" style={cardImage}>
+						<div className="tc-mc-mainCard">
+							<img src={card.poster} alt={`${card.name}' poster`}></img>
+
+							<div className="tc-mc-mc-description">
+								<h1>{card.name}</h1>
+								<p>{card.year.slice(0, 4)}</p>
+								<p className="tc-mc-mc-d-description">
+									{limitDescription(card.description)}
+								</p>
+								<div className="tc-mc-mc-d-genres">{card.genres}</div>
+								<div>
+									<button>Trailer</button>
+									<button>Details</button>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
-				<div
-					className="tc-miniCard-backImage"
-					style={{
-						backgroundImage: `url(${BASE_IMAGE_URL}/${
-							topRated?.results[currentCard + 1]?.backdrop_path
-						})`,
-					}}
-				>
-					<div className="tc-miniCard">
-						<img
-							className="tc-poster-image"
-							alt={`${card.name}' poster`}
-							src={`${POSTER_URL}/${
-								topRated?.results[currentCard + 1].poster_path
-							}`}
-						></img>
+					<div
+						className="backCardImage"
+						style={{
+							backgroundImage: `url(${BASE_IMAGE_URL}/${
+								topRated?.results[currentCard + 1]?.backdrop_path
+							})`,
+						}}
+					>
+						<div className="tc-mc-miniCard">
+							<img
+								src={`${POSTER_URL}/${
+									topRated?.results[currentCard + 1].poster_path
+								}`}
+								alt="poster"
+							></img>
+						</div>
 					</div>
 				</div>
 			</div>

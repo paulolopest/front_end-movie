@@ -8,7 +8,7 @@ import Header from './Components/Header/Header';
 const App = () => {
 	return (
 		<BrowserRouter>
-			<div className="App">
+			<div className="App animatedGradient">
 				<Header />
 				<Router />
 			</div>

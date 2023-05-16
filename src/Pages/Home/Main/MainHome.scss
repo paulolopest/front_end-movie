@@ -1,105 +1,61 @@
-.mainHome-container {
-	display: grid;
-	height: 100%;
-	max-width: 62vw;
-	grid-template-rows: 55% auto;
-	background-color: $primaryColor;
+.trending-content {
+	display: flex;
+	flex-direction: column;
 }
 
-.trending-content {
+.tc-mainContent {
 	display: flex;
 	justify-content: space-between;
 }
 
-.tc-card-backImage {
-	width: 70%;
-	height: 80%;
-	border-radius: 15px;
+.backCardImage {
+	height: 20rem;
+	border-radius: 10px;
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
 
-.tc-card {
+.tc-mc-mainCard {
 	display: flex;
-	z-index: 10;
-	gap: 0 1rem;
-	width: 100%;
-	height: 100.04%;
+	border-radius: 10px;
+
+	width: 40rem;
 	color: white;
-	padding: 0 1.5rem;
-	align-items: center;
-	border-radius: 15px;
+	gap: 0 1.5rem;
+	height: 20rem;
+	padding: 1rem 2rem;
 	background: rgba(255, 255, 255, 0.1);
 	backdrop-filter: blur(1px) brightness(0.4);
 }
 
-.tc-poster-image {
-	height: 80%;
-	border-radius: 10px;
-}
-
-.tc-card-box-description {
+.tc-mc-mc-description {
 	display: flex;
-	font-size: 0.8rem;
-	gap: 1.3rem 0;
 	flex-direction: column;
-	padding: 0 1.4rem;
-}
-
-.tc-card-genres {
-	display: flex;
-	gap: 0.5rem 1rem;
-	flex-wrap: wrap;
-
-	p {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 0.3rem 0.5rem;
-		background: rgba(255, 255, 255, 0.1);
-	}
-}
-
-.tc-card-buttons {
-	display: flex;
-	gap: 2rem;
-
-	button {
-		border-radius: 10px;
-		border: none;
-		outline: none;
-		color: white;
-		background: rgba(255, 255, 255, 0.3);
-		padding: 0.8rem 2rem;
-		cursor: pointer;
-	}
-}
-
-//
-//
-//
-
-.tc-miniCard-backImage {
-	width: 25%;
-	height: 80%;
-	background-color: red;
-	border-top-left-radius: 15px;
-	border-bottom-left-radius: 15px;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-}
-
-.tc-miniCard {
-	display: flex;
 	justify-content: center;
-	align-items: center;
-	height: 100.04%;
-	border-top-left-radius: 15px;
-	border-bottom-left-radius: 15px;
-	backdrop-filter: blur(1px) brightness(0.3);
+
+	.tc-mc-mc-d-description {
+		font-size: 0.8rem;
+	}
+
+	.tc-mc-mc-d-genres {
+		display: flex;
+	}
+}
+
+.tc-mc-miniCard {
+	display: flex;
+	height: 20rem;
+	width: 17rem;
+	padding: 1rem 2rem;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border: transparent;
+	align-content: center;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(2px) brightness(0.2);
 
 	img {
+		filter: blur(0.8px);
 	}
 }
