@@ -6,6 +6,7 @@
 .tc-mainContent {
 	display: flex;
 	justify-content: space-between;
+	position: relative;
 }
 
 .backCardImage {
@@ -15,11 +16,19 @@
 	background-position: center;
 	background-repeat: no-repeat;
 }
+.backCardImage2 {
+	height: 20rem;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
 
 .tc-mc-mainCard {
 	display: flex;
 	border-radius: 10px;
-
+	background-size: cover;
 	width: 40rem;
 	color: white;
 	gap: 0 1.5rem;
@@ -27,6 +36,10 @@
 	padding: 1rem 2rem;
 	background: rgba(255, 255, 255, 0.1);
 	backdrop-filter: blur(1px) brightness(0.4);
+}
+
+.tc-poster {
+	border-radius: 10px;
 }
 
 .tc-mc-mc-description {
@@ -50,12 +63,70 @@
 	padding: 1rem 2rem;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
-	border: transparent;
 	align-content: center;
 	background: rgba(255, 255, 255, 0.1);
 	backdrop-filter: blur(2px) brightness(0.2);
 
 	img {
 		filter: blur(0.8px);
+	}
+}
+
+.test {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 3rem;
+	height: 100%;
+	opacity: 0.5;
+
+	svg {
+		height: 2rem;
+		width: 2rem;
+		fill: white;
+		transition: 0.2s ease 0s;
+	}
+
+	&:hover {
+		opacity: 1;
+		svg {
+			height: 2.5rem;
+			width: 2.5rem;
+			transition: 0.2s ease 0s;
+		}
+	}
+}
+.test2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	z-index: 10;
+	top: 0;
+	right: 0;
+	position: absolute;
+	width: 3rem;
+	height: 100%;
+	opacity: 0.5;
+
+	svg {
+		height: 2rem;
+		width: 2rem;
+		fill: white;
+		transition: 0.2s ease 0s;
+	}
+
+	&:hover {
+		opacity: 1;
+		svg {
+			height: 2.5rem;
+			width: 2.5rem;
+			transition: 0.2s ease 0s;
+		}
 	}
 }

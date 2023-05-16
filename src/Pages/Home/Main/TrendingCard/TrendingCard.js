@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../../../../Assets/Icons/1f525.gif';
 import {
 	BASE_IMAGE_URL,
 	GET_GENRES,
@@ -7,9 +6,11 @@ import {
 } from '../../../../Request/ConfigRequests';
 import useAxios from '../../../../Hooks/useAxios';
 import { POSTER_URL } from './../../../../Request/ConfigRequests';
+import { ReactComponent as NextIcon } from '../../../../Assets/Icons/next-svgrepo-com.svg';
+import { ReactComponent as PreviousIcon } from '../../../../Assets/Icons/previous-svgrepo-com.svg';
 
 const TrendingCard = () => {
-	const [currentCard, setCurrentCard] = useState(7);
+	const [currentCard, setCurrentCard] = useState(1);
 
 	const getTrending = useAxios();
 	const getGenres = useAxios();
@@ -67,6 +68,17 @@ const TrendingCard = () => {
 		}
 	};
 
+	const nextCard = () => {
+		if (currentCard <= 19) {
+			setCurrentCard(currentCard + 1);
+		} else return null;
+	};
+	const previousCard = () => {
+		if (currentCard >= 1) {
+			setCurrentCard(currentCard - 1);
+		} else return null;
+	};
+
 	if (getTrending.loading || getGenres.loading) return <p>Loading...</p>;
 	if (topRated)
 		return (
@@ -76,7 +88,11 @@ const TrendingCard = () => {
 				<div className="tc-mainContent">
 					<div className="backCardImage" style={cardImage}>
 						<div className="tc-mc-mainCard">
-							<img src={card.poster} alt={`${card.name}' poster`}></img>
+							<img
+								className="tc-poster"
+								src={card.poster}
+								alt={`${card.name}' poster`}
+							></img>
 
 							<div className="tc-mc-mc-description">
 								<h1>{card.name}</h1>
@@ -90,10 +106,14 @@ const TrendingCard = () => {
 									<button>Details</button>
 								</div>
 							</div>
+							<span onClick={previousCard} className="test">
+								{currentCard > 1 && <PreviousIcon />}
+							</span>
 						</div>
 					</div>
+
 					<div
-						className="backCardImage"
+						className="backCardImage2"
 						style={{
 							backgroundImage: `url(${BASE_IMAGE_URL}/${
 								topRated?.results[currentCard + 1]?.backdrop_path
@@ -102,11 +122,15 @@ const TrendingCard = () => {
 					>
 						<div className="tc-mc-miniCard">
 							<img
+								className="tc-poster"
 								src={`${POSTER_URL}/${
 									topRated?.results[currentCard + 1].poster_path
 								}`}
 								alt="poster"
 							></img>
+							<span onClick={nextCard} className="test2">
+								<NextIcon />
+							</span>
 						</div>
 					</div>
 				</div>
