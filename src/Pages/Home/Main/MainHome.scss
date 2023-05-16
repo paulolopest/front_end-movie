@@ -8,13 +8,13 @@
 
 .trending-content {
 	display: flex;
-	align-items: center;
+	justify-content: space-between;
 }
 
 .tc-card-backImage {
 	width: 70%;
-	height: 90%;
-	border-radius: 20px;
+	height: 80%;
+	border-radius: 15px;
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -23,18 +23,83 @@
 .tc-card {
 	display: flex;
 	z-index: 10;
+	gap: 0 1rem;
 	width: 100%;
-	height: 100%;
+	height: 100.04%;
 	color: white;
-	padding: 0 2rem;
+	padding: 0 1.5rem;
 	align-items: center;
 	border-radius: 15px;
 	background: rgba(255, 255, 255, 0.1);
-	backdrop-filter: blur(3px) brightness(0.5);
+	backdrop-filter: blur(1px) brightness(0.4);
 }
 
 .tc-poster-image {
-	width: 33%;
 	height: 80%;
-	border-radius: 15px;
+	border-radius: 10px;
+}
+
+.tc-card-box-description {
+	display: flex;
+	font-size: 0.8rem;
+	gap: 1.3rem 0;
+	flex-direction: column;
+	padding: 0 1.4rem;
+}
+
+.tc-card-genres {
+	display: flex;
+	gap: 0.5rem 1rem;
+	flex-wrap: wrap;
+
+	p {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0.3rem 0.5rem;
+		background: rgba(255, 255, 255, 0.1);
+	}
+}
+
+.tc-card-buttons {
+	display: flex;
+	gap: 2rem;
+
+	button {
+		border-radius: 10px;
+		border: none;
+		outline: none;
+		color: white;
+		background: rgba(255, 255, 255, 0.3);
+		padding: 0.8rem 2rem;
+		cursor: pointer;
+	}
+}
+
+//
+//
+//
+
+.tc-miniCard-backImage {
+	width: 25%;
+	height: 80%;
+	background-color: red;
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.tc-miniCard {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100.04%;
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	backdrop-filter: blur(1px) brightness(0.3);
+
+	img {
+	}
 }

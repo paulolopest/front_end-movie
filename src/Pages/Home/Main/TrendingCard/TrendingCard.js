@@ -8,7 +8,7 @@ import useAxios from '../../../../Hooks/useAxios';
 import { POSTER_URL } from './../../../../Request/ConfigRequests';
 
 const TrendingCard = () => {
-	const [imageIndex, setImageIndex] = useState(1);
+	const [currentCard, setCurrentCard] = useState(1);
 
 	const getTrending = useAxios();
 	const getGenres = useAxios();
@@ -16,7 +16,7 @@ const TrendingCard = () => {
 	const topRated = getTrending.data;
 
 	const genres = getGenres?.data?.genres;
-	const genresIds = getTrending.data?.results[imageIndex].genre_ids;
+	const genresIds = getTrending.data?.results[currentCard].genre_ids;
 
 	const filmGenres = [];
 
@@ -46,13 +46,28 @@ const TrendingCard = () => {
 
 	getFilmGenres();
 
-	console.log(filmGenres);
-
 	const cardImage = {
-		backgroundImage: `url(${BASE_IMAGE_URL}/${topRated?.results[imageIndex]?.backdrop_path})`,
+		backgroundImage: `url(${BASE_IMAGE_URL}/${topRated?.results[currentCard]?.backdrop_path})`,
 	};
 
-	if (getTrending.loading) return <p>Loading...</p>;
+	const card = {
+		name: topRated?.results[currentCard].name,
+		poster: `${POSTER_URL}/${topRated?.results[currentCard].poster_path}`,
+		description: topRated?.results[currentCard].overview,
+		year: topRated?.results[currentCard].first_air_date,
+	};
+
+	const limitDescription = (text) => {
+		if (text.length > 200) {
+			return text.substring(0, 200) + '...';
+		} else {
+			return text;
+		}
+	};
+
+	console.log(topRated);
+
+	if (getTrending.loading || getGenres.loading) return <p>Loading...</p>;
 	if (topRated)
 		return (
 			<div className="trending-content">
@@ -60,14 +75,14 @@ const TrendingCard = () => {
 					<div className="tc-card">
 						<img
 							className="tc-poster-image"
-							alt={`${topRated.results[imageIndex]?.name}' poster`}
-							src={`${POSTER_URL}/${topRated.results[imageIndex]?.poster_path}`}
+							alt={`${card.name}' poster`}
+							src={card.poster}
 						></img>
-						<div>
-							<h2>{topRated.results[imageIndex]?.name}</h2>
-							<p>Ano / duration</p>
+						<div className="tc-card-box-description">
+							<h2 className="title">{card.name}</h2>
+							<p>{card.year.slice(0, 4)}</p>
 							<p className="tc-film-description">
-								{topRated.results[imageIndex]?.overview}
+								{limitDescription(card.description)}
 							</p>
 							<div className="tc-card-genres">
 								{filmGenres.map((movie, index) => (
@@ -76,9 +91,28 @@ const TrendingCard = () => {
 							</div>
 							<div className="tc-card-buttons">
 								<button>Trailer</button>
-								<button>Watch Movie</button>
+								<button>Details</button>
 							</div>
 						</div>
+					</div>
+				</div>
+
+				<div
+					className="tc-miniCard-backImage"
+					style={{
+						backgroundImage: `url(${BASE_IMAGE_URL}/${
+							topRated?.results[currentCard + 1]?.backdrop_path
+						})`,
+					}}
+				>
+					<div className="tc-miniCard">
+						<img
+							className="tc-poster-image"
+							alt={`${card.name}' poster`}
+							src={`${POSTER_URL}/${
+								topRated?.results[currentCard + 1].poster_path
+							}`}
+						></img>
 					</div>
 				</div>
 			</div>
