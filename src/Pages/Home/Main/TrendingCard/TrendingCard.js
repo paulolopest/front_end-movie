@@ -34,7 +34,7 @@ const TrendingCard = () => {
 			getGenres.axiosGet(url, options);
 		};
 		getAllGenres();
-	}, []);
+	}, [currentCard]);
 
 	const getFilmGenres = () => {
 		for (let i = 0; i < genresIds?.length; i++) {
@@ -57,7 +57,6 @@ const TrendingCard = () => {
 		poster: `${POSTER_URL}/${topRated?.results[currentCard].poster_path}`,
 		description: topRated?.results[currentCard].overview,
 		year: topRated?.results[currentCard].first_air_date,
-		genres: filmGenres.map((movie, index) => <p key={index}>{movie}</p>),
 	};
 
 	const limitDescription = (text) => {
@@ -69,14 +68,18 @@ const TrendingCard = () => {
 	};
 
 	const nextCard = () => {
-		if (currentCard <= 19) {
+		if (currentCard <= topRated?.results.length - 2) {
 			setCurrentCard(currentCard + 1);
-		} else return null;
+		} else {
+			setCurrentCard(1);
+		}
 	};
 	const previousCard = () => {
 		if (currentCard >= 1) {
 			setCurrentCard(currentCard - 1);
-		} else return null;
+		} else {
+			setCurrentCard(1);
+		}
 	};
 
 	if (getTrending.loading || getGenres.loading) return <p>Loading...</p>;
@@ -85,9 +88,15 @@ const TrendingCard = () => {
 			<div className="trending-content">
 				<h1>Trending </h1>
 
-				<div className="tc-mainContent">
+				<div className="tc-mainContent animeLeft">
 					<div className="backCardImage" style={cardImage}>
-						<div className="tc-mc-mainCard">
+						<div
+							className={
+								currentCard
+									? 'tc-mc-mainCard animeLeft'
+									: 'tc-mc-mainCard animeLeft'
+							}
+						>
 							<img
 								className="tc-poster"
 								src={card.poster}
@@ -100,15 +109,24 @@ const TrendingCard = () => {
 								<p className="tc-mc-mc-d-description">
 									{limitDescription(card.description)}
 								</p>
-								<div className="tc-mc-mc-d-genres">{card.genres}</div>
-								<div>
+								<div className="tc-mc-mc-d-genres">
+									{filmGenres.map((movie, index) => (
+										<p key={index}>{movie}</p>
+									))}
+								</div>
+								<div className="tc-mc-mc-d-buttons">
 									<button>Trailer</button>
 									<button>Details</button>
 								</div>
 							</div>
-							<span onClick={previousCard} className="test">
-								{currentCard > 1 && <PreviousIcon />}
-							</span>
+							{currentCard >= 2 ? (
+								<span
+									onClick={previousCard}
+									className="selectCardButton"
+								>
+									<PreviousIcon />
+								</span>
+							) : null}
 						</div>
 					</div>
 
@@ -128,9 +146,11 @@ const TrendingCard = () => {
 								}`}
 								alt="poster"
 							></img>
-							<span onClick={nextCard} className="test2">
-								<NextIcon />
-							</span>
+							{currentCard < 18 ? (
+								<span onClick={nextCard} className="selectCardButton2">
+									<NextIcon />
+								</span>
+							) : null}
 						</div>
 					</div>
 				</div>

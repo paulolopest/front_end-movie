@@ -1,7 +1,7 @@
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'b8b7f6cb58c2cb6bbf682c8574ad3888';
 export const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
-export const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/original';
+export const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 
 export const GET_TRENDING_MOVIES = () => {
 	return {

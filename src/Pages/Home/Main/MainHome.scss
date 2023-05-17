@@ -27,13 +27,13 @@
 
 .tc-mc-mainCard {
 	display: flex;
-	border-radius: 10px;
-	background-size: cover;
 	width: 40rem;
 	color: white;
-	gap: 0 1.5rem;
+	gap: 1.5rem;
 	height: 20rem;
 	padding: 1rem 2rem;
+	border-radius: 10px;
+	background-size: cover;
 	background: rgba(255, 255, 255, 0.1);
 	backdrop-filter: blur(1px) brightness(0.4);
 }
@@ -45,14 +45,48 @@
 .tc-mc-mc-description {
 	display: flex;
 	flex-direction: column;
+	gap: 1.3rem 0;
 	justify-content: center;
 
 	.tc-mc-mc-d-description {
 		font-size: 0.8rem;
 	}
+}
 
-	.tc-mc-mc-d-genres {
+.tc-mc-mc-d-genres {
+	display: flex;
+	gap: 0 0.4rem;
+
+	p {
 		display: flex;
+		padding: 0.3rem 0.4rem;
+		font-size: 0.7rem;
+		justify-content: center;
+		align-items: center;
+		background: rgba(255, 255, 255, 0.2);
+	}
+}
+
+.tc-mc-mc-d-buttons {
+	display: flex;
+	gap: 0 3rem;
+
+	button {
+		color: white;
+		outline: none;
+		border: transparent;
+		border-radius: 5px;
+		padding: 0.8rem 1.6rem;
+		background: rgba(255, 255, 255, 0.3);
+		border: 1px solid transparent;
+
+		cursor: pointer;
+
+		&:hover {
+			box-sizing: border-box;
+			border: 0.1px solid white;
+			background: rgba(255, 255, 255, 0.15);
+		}
 	}
 }
 
@@ -72,7 +106,7 @@
 	}
 }
 
-.test {
+.selectCardButton {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -101,7 +135,7 @@
 		}
 	}
 }
-.test2 {
+.selectCardButton2 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
