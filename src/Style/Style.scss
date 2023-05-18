@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&display=swap');
 @import '../Style/Colors.scss';
 @import '../Pages/Login/Login.scss';
 @import '../Pages/Login/LoginPage/LoginPage.scss';
@@ -7,7 +9,7 @@
 @import '../Components/CustomButton/Button.scss';
 @import '../Components/CustomInput/Input.scss';
 @import '../Components/Header/Header.scss';
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&display=swap');
+@import '../Pages/Home/Main/ListContent/ListContent.scss';
 
 .title {
 	line-height: 1;
@@ -38,13 +40,7 @@
 .animatedGradient {
 	background: linear-gradient(140deg, #15121a, $primaryColor, #292433);
 	background-size: 200% 200%;
-	animation: gradient 15s ease-in-out infinite;
-}
-
-.animeLeft {
-	opacity: 0;
-	transform: translateX(15px);
-	animation: animeLeft 0.1s forwards;
+	animation: gradient 10s ease-in-out infinite;
 }
 
 @keyframes animeLeft {
@@ -52,4 +48,24 @@
 		opacity: 1;
 		transform: initial;
 	}
+}
+
+.animeLeft {
+	opacity: 0.5;
+	transform: translateX(10px);
+	animation: animeLeft 0.5s forwards;
+	transition: 0.5s ease-in-out;
+}
+@keyframes animeRight {
+	to {
+		opacity: 1;
+		transform: initial;
+	}
+}
+
+.animeRight {
+	opacity: 0.5;
+	transform: translateX(-10px);
+	animation: animeRight 0.5s forwards;
+	transition: 0.5s ease-in-out;
 }

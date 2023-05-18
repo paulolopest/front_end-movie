@@ -1,13 +1,12 @@
 import React from 'react';
 import TrendingCard from './TrendingCard/TrendingCard';
+import ListContent from './ListContent/ListContent';
 
 const MainHome = () => {
 	return (
 		<section className="mainHome-container">
 			<TrendingCard />
-			<div className="list-films">a</div>
-			<div className="list-films">a</div>
-			<div className="big-card-films">a</div>
+			<ListContent />
 		</section>
 	);
 };

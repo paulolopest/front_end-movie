@@ -1,62 +1,94 @@
+import { ReactComponent as PreviousIcon } from '../../../../Assets/Icons/previous-svgrepo-com.svg';
+import { ReactComponent as NextIcon } from '../../../../Assets/Icons/next-svgrepo-com.svg';
+import useAxios from '../../../../Hooks/useAxios';
 import React, { useState } from 'react';
 import {
+	POSTER_URL,
+	GET_MOVIE_GENRES,
+} from './../../../../Request/ConfigRequests';
+import {
 	BASE_IMAGE_URL,
-	GET_GENRES,
-	GET_TRENDING_MOVIES,
+	GET_SERIES_GENRES,
+	GET_TRENDING_CONTENT,
 } from '../../../../Request/ConfigRequests';
-import useAxios from '../../../../Hooks/useAxios';
-import { POSTER_URL } from './../../../../Request/ConfigRequests';
-import { ReactComponent as NextIcon } from '../../../../Assets/Icons/next-svgrepo-com.svg';
-import { ReactComponent as PreviousIcon } from '../../../../Assets/Icons/previous-svgrepo-com.svg';
 
 const TrendingCard = () => {
 	const [currentCard, setCurrentCard] = useState(1);
+	const [animeDirection, setAnimeDirection] = useState('animeLeft');
+	const timeoutRef = React.useRef();
 
 	const getTrending = useAxios();
-	const getGenres = useAxios();
+	const getSeriesGenres = useAxios();
+	const getMovieGenres = useAxios();
 
 	const topRated = getTrending.data;
 
-	const genres = getGenres?.data?.genres;
-	const genresIds = getTrending.data?.results[currentCard].genre_ids;
+	const seriesGenres = getSeriesGenres?.data?.genres;
+	const movieGenres = getMovieGenres?.data?.genres;
+	const currentCardGenresIds =
+		getTrending.data?.results[currentCard].genre_ids;
 
-	const filmGenres = [];
+	let allGenresConcatenated = seriesGenres?.concat(movieGenres);
+	allGenresConcatenated?.shift();
+
+	const filteredGenres = allGenresConcatenated?.filter((item, index) => {
+		return !allGenresConcatenated
+			.slice(0, index)
+			.some((obj) => obj.id === item.id && obj.name === item.name);
+	});
 
 	React.useEffect(() => {
 		const getTopRated = () => {
-			const { url, options } = GET_TRENDING_MOVIES();
+			const { url, options } = GET_TRENDING_CONTENT();
 			getTrending.axiosGet(url, options);
 		};
 		getTopRated();
 
 		const getAllGenres = () => {
-			const { url, options } = GET_GENRES();
-			getGenres.axiosGet(url, options);
+			const { url, options } = GET_SERIES_GENRES();
+			getSeriesGenres.axiosGet(url, options);
+
+			const { url1, options1 } = GET_MOVIE_GENRES();
+			getMovieGenres.axiosGet(url1, options1);
 		};
 		getAllGenres();
+
+		clearTimeout(timeoutRef.current);
+		timeoutRef.current = setTimeout(() => {
+			if (currentCard < 19) {
+				setAnimeDirection('animeLeft');
+				setCurrentCard(currentCard + 1);
+			}
+			if (currentCard === 18) {
+				setCurrentCard(1);
+			}
+		}, 155000);
 	}, [currentCard]);
 
-	const getFilmGenres = () => {
-		for (let i = 0; i < genresIds?.length; i++) {
-			for (let j = 0; j < genres?.length; j++) {
-				if (genresIds[i] === genres[j].id) {
-					filmGenres.push(genres[j].name);
+	const currentCardGenres = [];
+
+	const getCurrentCardGenres = () => {
+		for (let i = 0; i < currentCardGenresIds?.length; i++) {
+			for (let j = 0; j < filteredGenres?.length; j++) {
+				if (currentCardGenresIds[i] === filteredGenres[j].id) {
+					currentCardGenres.push(filteredGenres[j].name);
 				}
 			}
 		}
 	};
 
-	getFilmGenres();
+	getCurrentCardGenres();
 
-	const cardImage = {
-		backgroundImage: `url(${BASE_IMAGE_URL}/${topRated?.results[currentCard]?.backdrop_path})`,
-	};
+	console.log(currentCardGenres);
 
 	const card = {
-		name: topRated?.results[currentCard].name,
+		backdropImage: {
+			backgroundImage: `url(${BASE_IMAGE_URL}/${topRated?.results[currentCard]?.backdrop_path})`,
+		},
+		name: topRated?.results[currentCard].title,
 		poster: `${POSTER_URL}/${topRated?.results[currentCard].poster_path}`,
 		description: topRated?.results[currentCard].overview,
-		year: topRated?.results[currentCard].first_air_date,
+		year: topRated?.results[currentCard].release_date,
 	};
 
 	const limitDescription = (text) => {
@@ -69,34 +101,28 @@ const TrendingCard = () => {
 
 	const nextCard = () => {
 		if (currentCard <= topRated?.results.length - 2) {
+			setAnimeDirection('animeLeft');
 			setCurrentCard(currentCard + 1);
-		} else {
-			setCurrentCard(1);
+			clearTimeout(5000);
 		}
 	};
 	const previousCard = () => {
 		if (currentCard >= 1) {
+			setAnimeDirection('animeRight');
 			setCurrentCard(currentCard - 1);
-		} else {
-			setCurrentCard(1);
+			clearTimeout(5000);
 		}
 	};
 
-	if (getTrending.loading || getGenres.loading) return <p>Loading...</p>;
+	if (getTrending.loading || getSeriesGenres.loading) return <p>Loading...</p>;
 	if (topRated)
 		return (
 			<div className="trending-content">
-				<h1>Trending </h1>
+				<h1 className="tc-title">Trending 🔥</h1>
 
-				<div className="tc-mainContent animeLeft">
-					<div className="backCardImage" style={cardImage}>
-						<div
-							className={
-								currentCard
-									? 'tc-mc-mainCard animeLeft'
-									: 'tc-mc-mainCard animeLeft'
-							}
-						>
+				<div className={`tc-mainContent ${animeDirection}`}>
+					<div className="backCardImage" style={card.backdropImage}>
+						<div className={'tc-mc-mainCard '}>
 							<img
 								className="tc-poster"
 								src={card.poster}
@@ -110,7 +136,7 @@ const TrendingCard = () => {
 									{limitDescription(card.description)}
 								</p>
 								<div className="tc-mc-mc-d-genres">
-									{filmGenres.map((movie, index) => (
+									{currentCardGenres.map((movie, index) => (
 										<p key={index}>{movie}</p>
 									))}
 								</div>
