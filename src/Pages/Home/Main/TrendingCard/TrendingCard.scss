@@ -17,9 +17,15 @@
 .backCardImage {
 	height: 20rem;
 	border-radius: 10px;
-	background-size: cover;
+	background-size: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
+	transition: 0.2s ease-in-out;
+
+	&:hover {
+		background-size: 105%;
+		transition: 0.1s ease-in-out;
+	}
 }
 .backCardImage2 {
 	height: 20rem;
@@ -41,10 +47,17 @@
 	background-size: cover;
 	background: rgba(255, 255, 255, 0.1);
 	backdrop-filter: blur(1px) brightness(0.3);
+	transition: 0.1s ease-in-out;
+	cursor: pointer;
+
+	&:hover {
+		backdrop-filter: blur(3px) brightness(0.3);
+	}
 }
 
 .tc-poster {
 	border-radius: 10px;
+	transition: 0.2s ease-in-out;
 }
 
 .tc-mc-mc-description {

@@ -1,0 +1,86 @@
+.mh-listContent {
+	display: flex;
+	flex-direction: column;
+}
+
+.lc-card {
+	border-radius: 10px;
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 15.5rem;
+	width: 10.5rem;
+	transition: 0.5s ease 0s;
+	cursor: pointer;
+
+	&:hover {
+		transition: 0.5s ease 0s;
+		background-size: 110%;
+	}
+}
+
+.lc-cardList-container {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+
+.lc-clc-previousButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 3rem;
+	height: 100%;
+	opacity: 0.5;
+
+	svg {
+		height: 2rem;
+		width: 2rem;
+		fill: white;
+		transition: 0.2s ease 0s;
+	}
+
+	&:hover {
+		opacity: 1;
+		svg {
+			height: 2.5rem;
+			width: 2.5rem;
+			transition: 0.2s ease 0s;
+		}
+	}
+}
+
+.lc-clc-nextButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	z-index: 10;
+	top: 0;
+	right: 0;
+	position: absolute;
+	width: 3rem;
+	height: 100%;
+	opacity: 0.5;
+
+	svg {
+		height: 2rem;
+		width: 2rem;
+		fill: white;
+		transition: 0.2s ease 0s;
+	}
+
+	&:hover {
+		opacity: 1;
+		svg {
+			height: 2.5rem;
+			width: 2.5rem;
+			transition: 0.2s ease 0s;
+		}
+	}
+}

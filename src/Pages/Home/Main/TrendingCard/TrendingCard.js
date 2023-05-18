@@ -13,7 +13,7 @@ import {
 } from '../../../../Request/ConfigRequests';
 
 const TrendingCard = () => {
-	const [currentCard, setCurrentCard] = useState(1);
+	const [currentCard, setCurrentCard] = useState(0);
 	const [animeDirection, setAnimeDirection] = useState('animeLeft');
 	const timeoutRef = React.useRef();
 
@@ -34,7 +34,7 @@ const TrendingCard = () => {
 	const filteredGenres = allGenresConcatenated?.filter((item, index) => {
 		return !allGenresConcatenated
 			.slice(0, index)
-			.some((obj) => obj.id === item.id && obj.name === item.name);
+			.some((obj) => obj?.id === item?.id && obj?.name === item?.name);
 	});
 
 	React.useEffect(() => {
@@ -52,25 +52,24 @@ const TrendingCard = () => {
 			getMovieGenres.axiosGet(url1, options1);
 		};
 		getAllGenres();
-
-		clearTimeout(timeoutRef.current);
-		timeoutRef.current = setTimeout(() => {
-			if (currentCard < 19) {
-				setAnimeDirection('animeLeft');
-				setCurrentCard(currentCard + 1);
-			}
-			if (currentCard === 18) {
-				setCurrentCard(1);
-			}
-		}, 155000);
-	}, [currentCard]);
+	}, []);
+	clearTimeout(timeoutRef.current);
+	timeoutRef.current = setTimeout(() => {
+		if (currentCard < 19) {
+			setAnimeDirection('animeLeft');
+			setCurrentCard(currentCard + 1);
+		}
+		if (currentCard === 18) {
+			setCurrentCard(0);
+		}
+	}, 5000);
 
 	const currentCardGenres = [];
 
 	const getCurrentCardGenres = () => {
 		for (let i = 0; i < currentCardGenresIds?.length; i++) {
 			for (let j = 0; j < filteredGenres?.length; j++) {
-				if (currentCardGenresIds[i] === filteredGenres[j].id) {
+				if (currentCardGenresIds[i] === filteredGenres[j]?.id) {
 					currentCardGenres.push(filteredGenres[j].name);
 				}
 			}
@@ -78,8 +77,6 @@ const TrendingCard = () => {
 	};
 
 	getCurrentCardGenres();
-
-	console.log(currentCardGenres);
 
 	const card = {
 		backdropImage: {
@@ -100,17 +97,13 @@ const TrendingCard = () => {
 	};
 
 	const nextCard = () => {
-		if (currentCard <= topRated?.results.length - 2) {
-			setAnimeDirection('animeLeft');
+		if (currentCard <= topRated?.results.length) {
 			setCurrentCard(currentCard + 1);
-			clearTimeout(5000);
 		}
 	};
 	const previousCard = () => {
-		if (currentCard >= 1) {
-			setAnimeDirection('animeRight');
+		if (currentCard >= 0) {
 			setCurrentCard(currentCard - 1);
-			clearTimeout(5000);
 		}
 	};
 
@@ -145,7 +138,7 @@ const TrendingCard = () => {
 									<button>Details</button>
 								</div>
 							</div>
-							{currentCard >= 2 ? (
+							{currentCard >= 1 ? (
 								<span
 									onClick={previousCard}
 									className="selectCardButton"
