@@ -2,7 +2,7 @@
 	display: grid;
 	min-height: calc(100vh - 8vh);
 	width: 100vw;
-	grid-template-columns: 1.5fr 6.2fr 2.3fr;
+	grid-template-columns: 15vw 62vw 23vw;
 }
 
 .home-left-bar {
@@ -54,6 +54,10 @@
 
 .home-right-bar {
 	display: flex;
-	width: 23vw;
-	background-color: none;
+	width: 10px;
+}
+
+.mainHome-container {
+	width: 62vw;
+	height: auto;
 }
