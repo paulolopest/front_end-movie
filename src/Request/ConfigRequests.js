@@ -70,3 +70,17 @@ export const GET_BEST_CONTENT = () => {
 		},
 	};
 };
+
+export const GET_UPCOMING_CONTENT = () => {
+	return {
+		url: `${BASE_URL}/movie/upcoming?language=en-US&page=1`,
+		options: {
+			method: 'GET',
+			headers: {
+				accept: 'application/json',
+				Authorization:
+					'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiOGI3ZjZjYjU4YzJjYjZiYmY2ODJjODU3NGFkMzg4OCIsInN1YiI6IjY0NTE5ZTczMTA1NjExMDE1NjkzZTJlZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PxFlk1ox1JW4WF9Oe94Optutc7ck-WJhKlK6LklhGO4',
+			},
+		},
+	};
+};

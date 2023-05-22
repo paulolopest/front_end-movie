@@ -7,6 +7,7 @@ import { ReactComponent as ExitIcon } from '../../Assets/Icons/log-out.svg';
 import MainHome from './Main/MainHome';
 import HelpHome from './Help/HelpHome';
 import DiscoveryHome from './Discovery/DiscoveryHome';
+import RightSectionUpcoming from './RightSection/RightSection';
 
 const Home = () => {
 	return (
@@ -38,7 +39,7 @@ const Home = () => {
 					<Route path="help" element={<HelpHome />} />
 				</Routes>
 			</div>
-			<section className="home-right-bar">abc</section>
+			<RightSectionUpcoming />
 		</div>
 	);
 };

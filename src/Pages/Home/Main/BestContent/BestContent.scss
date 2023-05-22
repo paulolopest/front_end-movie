@@ -1,7 +1,7 @@
 .bestContent {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 10rem;
+	margin-bottom: 1.5rem;
 	max-width: 62vw;
 }
 
@@ -41,6 +41,6 @@
 	&:hover {
 		transition: 0.3s ease-in-out;
 		width: 20rem;
-		border: 1px solid #999996;
+		border: 1px solid #999999;
 	}
 }

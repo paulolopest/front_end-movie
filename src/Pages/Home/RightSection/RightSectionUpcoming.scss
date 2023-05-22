@@ -1,0 +1,37 @@
+.rsu-container {
+	display: flex;
+	flex-direction: column;
+	color: white;
+	align-items: center;
+	margin-right: 0.5rem;
+	gap: 1.5rem 0;
+}
+
+.rsu-card {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	width: 85%;
+	filter: brightness(0.3);
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+	padding: 0 0.5rem;
+
+	img {
+		border-radius: 10px;
+	}
+
+	p {
+		color: #999999;
+		font-size: 0.8rem;
+	}
+
+	&:hover {
+		filter: initial;
+		transition: 0.2s ease-in-out;
+
+		p {
+			color: white;
+		}
+	}
+}

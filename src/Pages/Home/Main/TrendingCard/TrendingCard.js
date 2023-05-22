@@ -53,6 +53,7 @@ const TrendingCard = () => {
 		};
 		getAllGenres();
 	}, []);
+
 	clearTimeout(timeoutRef.current);
 	timeoutRef.current = setTimeout(() => {
 		if (currentCard < 19) {

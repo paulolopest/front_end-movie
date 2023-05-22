@@ -9,6 +9,7 @@ const MainHome = () => {
 			<TrendingCard />
 			<ListContent />
 			<BestContent />
+			<ListContent />
 		</section>
 	);
 };
