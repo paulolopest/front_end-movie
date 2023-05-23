@@ -8,30 +8,13 @@ import {
 } from '../../../Request/ConfigRequests';
 
 const RightSectionUpcoming = () => {
-	const [currentCard, setCurrentCard] = React.useState(1);
-
 	const RSUAxios = useAxios();
-	const RSUList = RSUAxios?.data?.results.slice(currentCard, currentCard + 2);
+	const RSUList = RSUAxios?.data?.results;
 
 	React.useEffect(() => {
 		const { url, options } = GET_UPCOMING_CONTENT();
 		RSUAxios.axiosGet(url, options);
 	}, []);
-
-	const limitDescription = (text) => {
-		if (text.length > 200) {
-			return text.substring(0, 200) + '...';
-		} else {
-			return text;
-		}
-	};
-
-	const nextUpcoming = () => {
-		setCurrentCard(currentCard + 2);
-	};
-	const previousUpcoming = () => {
-		setCurrentCard(currentCard - 2);
-	};
 
 	const RSUMap = RSUList?.map((item) => (
 		<div className="rsu-card" key={item.id}>
@@ -51,19 +34,7 @@ const RightSectionUpcoming = () => {
 				Upcoming Movies 🍿
 			</h2>
 
-			{currentCard === 1 ? null : (
-				<span onClick={previousUpcoming} className="rsu-previousButton">
-					<PreviousIcon />
-				</span>
-			)}
-
 			{RSUMap}
-
-			{currentCard === 17 ? null : (
-				<span onClick={nextUpcoming} className="rsu-nextButton">
-					<NextIcon />
-				</span>
-			)}
 		</div>
 	);
 };

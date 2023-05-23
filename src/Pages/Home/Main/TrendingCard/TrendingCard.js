@@ -14,7 +14,7 @@ import {
 
 const TrendingCard = () => {
 	const [currentCard, setCurrentCard] = useState(0);
-	const [animeDirection, setAnimeDirection] = useState('animeLeft');
+	const [animeDirection, setAnimeDirection] = useState('');
 	const timeoutRef = React.useRef();
 
 	const getTrending = useAxios();
@@ -54,16 +54,18 @@ const TrendingCard = () => {
 		getAllGenres();
 	}, []);
 
-	clearTimeout(timeoutRef.current);
-	timeoutRef.current = setTimeout(() => {
-		if (currentCard < 19) {
-			setAnimeDirection('animeLeft');
-			setCurrentCard(currentCard + 1);
-		}
-		if (currentCard === 18) {
-			setCurrentCard(0);
-		}
-	}, 5000);
+	React.useEffect(() => {
+		clearTimeout(timeoutRef.current);
+		timeoutRef.current = setTimeout(() => {
+			if (currentCard < 19) {
+				setAnimeDirection('animeLeft');
+				setCurrentCard(currentCard + 1);
+			}
+			if (currentCard === 18) {
+				setCurrentCard(0);
+			}
+		}, 5000);
+	}, [currentCard]);
 
 	const currentCardGenres = [];
 
@@ -97,16 +99,33 @@ const TrendingCard = () => {
 		}
 	};
 
+	React.useEffect(() => {
+		switch (animeDirection) {
+			case 'animeLeft':
+				setAnimeDirection('animeRight');
+				break;
+			case 'animeRight':
+				setAnimeDirection('animeLeft');
+				break;
+			default:
+				break;
+		}
+	}, [currentCard]);
+
 	const nextCard = () => {
 		if (currentCard <= topRated?.results.length) {
 			setCurrentCard(currentCard + 1);
+			setAnimeDirection('animeRight');
 		}
 	};
 	const previousCard = () => {
 		if (currentCard >= 0) {
 			setCurrentCard(currentCard - 1);
+			setAnimeDirection('animeLeft');
 		}
 	};
+
+	console.log(animeDirection);
 
 	if (getTrending.loading || getSeriesGenres.loading) return <p>Loading...</p>;
 	if (topRated)

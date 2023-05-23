@@ -53,7 +53,7 @@
 
 .animeLeft {
 	opacity: 0.5;
-	transform: translateX(10px);
+	transform: translateX(50px);
 	animation: animeLeft 0.5s forwards;
 	transition: 0.5s ease-in-out;
 }
@@ -66,17 +66,17 @@
 
 .animeRight {
 	opacity: 0.5;
-	transform: translateX(-10px);
+	transform: translateX(-50px);
 	animation: animeRight 0.5s forwards;
 	transition: 0.5s ease-in-out;
 }
 
 ::-webkit-scrollbar {
-	width: 10px; /* Largura da barra de rolagem */
+	width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-	background-color: #292433; /* Cor do fundo da barra de rolagem */
+	background-color: #292433;
 }
 
 ::-webkit-scrollbar-thumb {

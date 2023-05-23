@@ -6,6 +6,12 @@
 	margin-right: 0.5rem;
 	gap: 1.5rem 0;
 	transition: 0.2s ease-in-out;
+	height: calc(100vh - 4rem);
+	overflow: auto;
+
+	&::-webkit-scrollbar {
+		width: 0px;
+	}
 }
 
 .rsu-card {
@@ -42,57 +48,6 @@
 		p {
 			display: inherit;
 			color: white;
-		}
-	}
-}
-
-.rsu-previousButton {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
-	z-index: 10;
-	position: absolute;
-	width: 5rem;
-	height: 1rem;
-	opacity: 0.5;
-	top: calc(10vh + 4rem);
-
-	svg {
-		transition: 0.2s ease 0s;
-	}
-
-	&:hover {
-		opacity: 1;
-		svg {
-			height: 2.5rem;
-			width: 2.5rem;
-			transition: 0.2s ease 0s;
-		}
-	}
-}
-.rsu-nextButton {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
-	z-index: 10;
-	position: absolute;
-	width: 5rem;
-	height: 1rem;
-	opacity: 0.5;
-	top: calc(70vh + 4rem);
-
-	svg {
-		transition: 0.2s ease 0s;
-	}
-
-	&:hover {
-		opacity: 1;
-		svg {
-			height: 2.5rem;
-			width: 2.5rem;
-			transition: 0.2s ease 0s;
 		}
 	}
 }
