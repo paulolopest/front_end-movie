@@ -50,14 +50,16 @@
 	transition: 0.2s ease-in-out;
 	cursor: pointer;
 
+	img {
+		max-width: 12rem;
+		height: 100%;
+		border-radius: 10px;
+		transition: 0.2s ease-in-out;
+	}
+
 	&:hover {
 		backdrop-filter: blur(3px) brightness(0.3);
 	}
-}
-
-.tc-poster {
-	border-radius: 10px;
-	transition: 0.2s ease-in-out;
 }
 
 .tc-mc-mc-description {

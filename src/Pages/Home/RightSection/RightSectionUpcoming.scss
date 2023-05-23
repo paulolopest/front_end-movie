@@ -29,7 +29,8 @@
 		transition: 0.2s ease-in-out;
 	}
 
-	p {
+	p,
+	span {
 		display: none;
 		color: #999999;
 		font-size: 0.8rem;
@@ -45,7 +46,8 @@
 			}
 		}
 
-		p {
+		p,
+		span {
 			display: inherit;
 			color: white;
 		}

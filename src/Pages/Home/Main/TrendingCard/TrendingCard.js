@@ -2,6 +2,7 @@ import { ReactComponent as PreviousIcon } from '../../../../Assets/Icons/previou
 import { ReactComponent as NextIcon } from '../../../../Assets/Icons/next-svgrepo-com.svg';
 import useAxios from '../../../../Hooks/useAxios';
 import React, { useState } from 'react';
+import Image from './../../../../Helper/Image/Image';
 import {
 	POSTER_URL,
 	GET_MOVIE_GENRES,
@@ -136,11 +137,7 @@ const TrendingCard = () => {
 				<div className={`tc-mainContent ${animeDirection}`}>
 					<div className="backCardImage" style={card.backdropImage}>
 						<div className={'tc-mc-mainCard '}>
-							<img
-								className="tc-poster"
-								src={card.poster}
-								alt={`${card.name}' poster`}
-							></img>
+							<Image src={card.poster} alt={`${card.name}' poster`} />
 
 							<div className="tc-mc-mc-description">
 								<h1>{card.name}</h1>

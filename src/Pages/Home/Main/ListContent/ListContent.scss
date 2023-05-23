@@ -4,7 +4,6 @@
 }
 
 .lc-card {
-	border-radius: 10px;
 	background-size: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -13,9 +12,16 @@
 	transition: 0.5s ease 0s;
 	cursor: pointer;
 
+	img {
+		border-radius: 10px;
+
+		&:hover {
+			transform: scale(1.07);
+		}
+	}
+
 	&:hover {
 		transition: 0.5s ease 0s;
-		background-size: 110%;
 	}
 }
 
