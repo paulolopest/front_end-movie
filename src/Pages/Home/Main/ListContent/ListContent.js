@@ -1,12 +1,12 @@
-import React from 'react';
-import useAxios from './../../../../Hooks/useAxios';
-import { ReactComponent as PreviousIcon } from '../../../../Assets/Icons/previous-svgrepo-com.svg';
-import { ReactComponent as NextIcon } from '../../../../Assets/Icons/next-svgrepo-com.svg';
-import Image from './../../../../Helper/Image/Image';
 import {
 	BASE_IMAGE_URL,
 	GET_CINEMA_MOVIES,
 } from '../../../../Request/ConfigRequests';
+import React from 'react';
+import useAxios from './../../../../Hooks/useAxios';
+import { ReactComponent as PreviousIcon } from '../../../../Assets/Icons/previous-svgrepo-com.svg';
+import { ReactComponent as NextIcon } from '../../../../Assets/Icons/next-svgrepo-com.svg';
+import Image from '../../../../Components/Image/Image';
 
 const ListContent = () => {
 	const [currentCard, setCurrentCard] = React.useState(0);

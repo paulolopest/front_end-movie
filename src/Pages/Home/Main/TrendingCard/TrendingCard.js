@@ -1,8 +1,3 @@
-import { ReactComponent as PreviousIcon } from '../../../../Assets/Icons/previous-svgrepo-com.svg';
-import { ReactComponent as NextIcon } from '../../../../Assets/Icons/next-svgrepo-com.svg';
-import useAxios from '../../../../Hooks/useAxios';
-import React, { useState } from 'react';
-import Image from './../../../../Helper/Image/Image';
 import {
 	POSTER_URL,
 	GET_MOVIE_GENRES,
@@ -12,6 +7,12 @@ import {
 	GET_SERIES_GENRES,
 	GET_TRENDING_CONTENT,
 } from '../../../../Request/ConfigRequests';
+import { ReactComponent as PreviousIcon } from '../../../../Assets/Icons/previous-svgrepo-com.svg';
+import { ReactComponent as NextIcon } from '../../../../Assets/Icons/next-svgrepo-com.svg';
+import useAxios from '../../../../Hooks/useAxios';
+import React, { useState } from 'react';
+import Image from '../../../../Components/Image/Image';
+import Loading from '../../../../Components/Loading/Loading';
 
 const TrendingCard = () => {
 	const [currentCard, setCurrentCard] = useState(0);
@@ -126,9 +127,12 @@ const TrendingCard = () => {
 		}
 	};
 
-	console.log(animeDirection);
-
-	if (getTrending.loading || getSeriesGenres.loading) return <p>Loading...</p>;
+	if (
+		getTrending.loading ||
+		getSeriesGenres.loading ||
+		getSeriesGenres.loading
+	)
+		return <Loading />;
 	if (topRated)
 		return (
 			<div className="trending-content">
