@@ -53,11 +53,12 @@
 
 .home-right-bar {
 	display: flex;
-	grid-column: 2/3;
+	grid-column: 3/4;
 	border: 1px solid green;
 }
 
 .mainHome-container {
+	grid-column: 2/3;
 	width: 62vw;
 	height: auto;
 }

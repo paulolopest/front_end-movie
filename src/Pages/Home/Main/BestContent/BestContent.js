@@ -2,7 +2,7 @@ import React from 'react';
 import {
 	BASE_IMAGE_URL,
 	GET_BEST_CONTENT,
-} from '../../../../Request/ConfigRequests';
+} from '../../../../RequestManager/ConfigRequests';
 import useAxios from './../../../../Hooks/useAxios';
 
 const BestContent = () => {
@@ -20,7 +20,7 @@ const BestContent = () => {
 			key={index}
 			className="bc-card"
 			style={{
-				backgroundImage: `url(${BASE_IMAGE_URL}/${BCList[index]?.poster_path})`,
+				backgroundImage: `url(${BASE_IMAGE_URL}/${movie.poster_path})`,
 			}}
 		></div>
 	));

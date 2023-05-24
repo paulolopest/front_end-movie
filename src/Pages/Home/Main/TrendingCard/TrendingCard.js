@@ -1,12 +1,10 @@
 import {
-	POSTER_URL,
-	GET_MOVIE_GENRES,
-} from './../../../../Request/ConfigRequests';
-import {
 	BASE_IMAGE_URL,
 	GET_SERIES_GENRES,
 	GET_TRENDING_CONTENT,
-} from '../../../../Request/ConfigRequests';
+	POSTER_URL,
+	GET_MOVIE_GENRES,
+} from '../../../../RequestManager/ConfigRequests';
 import { ReactComponent as PreviousIcon } from '../../../../Assets/Icons/previous-svgrepo-com.svg';
 import { ReactComponent as NextIcon } from '../../../../Assets/Icons/next-svgrepo-com.svg';
 import useAxios from '../../../../Hooks/useAxios';
@@ -125,6 +123,10 @@ const TrendingCard = () => {
 			setCurrentCard(currentCard - 1);
 			setAnimeDirection('animeLeft');
 		}
+	};
+
+	const onClickTest = ({ target }) => {
+		console.log(target);
 	};
 
 	if (

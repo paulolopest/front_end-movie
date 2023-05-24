@@ -5,11 +5,11 @@ import { ReactComponent as DiscoverIcon } from '../../Assets/Icons/compass.svg';
 import { ReactComponent as HelpIcon } from '../../Assets/Icons/help-circle.svg';
 import { ReactComponent as ExitIcon } from '../../Assets/Icons/log-out.svg';
 import MainHome from './Main/MainHome';
-import HelpHome from './Help/HelpHome';
-import DiscoveryHome from './Discovery/DiscoveryHome';
+import ContentModal from './../../Components/ContentModal/ContentModal';
 import RightSectionUpcoming from './RightSection/RightSection';
 
 const Home = () => {
+	const [modal, setModal] = React.useState(null);
 	return (
 		<div className="home-container">
 			<section className="home-left-bar">
@@ -33,10 +33,9 @@ const Home = () => {
 				</nav>
 			</section>
 			<div className="home-main-content">
+				{modal && <ContentModal movieId={modal?.id} />}
 				<Routes>
-					<Route path="/" element={<MainHome />} />
-					<Route path="discovery" element={<DiscoveryHome />} />
-					<Route path="help" element={<HelpHome />} />
+					<Route path="/" element={<MainHome setModal={setModal} />} />
 				</Routes>
 			</div>
 			<RightSectionUpcoming />

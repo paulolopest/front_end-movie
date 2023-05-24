@@ -5,7 +5,7 @@ import useAxios from '../../../Hooks/useAxios';
 import {
 	BASE_IMAGE_URL,
 	GET_UPCOMING_CONTENT,
-} from '../../../Request/ConfigRequests';
+} from '../../../RequestManager/ConfigRequests';
 
 const RightSectionUpcoming = () => {
 	const RSUAxios = useAxios();

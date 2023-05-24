@@ -84,3 +84,30 @@ export const GET_UPCOMING_CONTENT = () => {
 		},
 	};
 };
+
+export const GET_MOVIE_DETAILS = (id) => {
+	return {
+		url: `${BASE_URL}/movie/${id}?api_key=b8b7f6cb58c2cb6bbf682c8574ad3888`,
+		options: {
+			method: 'GET',
+			headers: {
+				accept: 'application/json',
+				Authorization:
+					'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiOGI3ZjZjYjU4YzJjYjZiYmY2ODJjODU3NGFkMzg4OCIsInN1YiI6IjY0NTE5ZTczMTA1NjExMDE1NjkzZTJlZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PxFlk1ox1JW4WF9Oe94Optutc7ck-WJhKlK6LklhGO4',
+			},
+		},
+	};
+};
+export const GET_SERIES_DETAILS = (id) => {
+	return {
+		url: `${BASE_URL}/tv/${id}?api_key=b8b7f6cb58c2cb6bbf682c8574ad3888`,
+		options: {
+			method: 'GET',
+			headers: {
+				accept: 'application/json',
+				Authorization:
+					'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiOGI3ZjZjYjU4YzJjYjZiYmY2ODJjODU3NGFkMzg4OCIsInN1YiI6IjY0NTE5ZTczMTA1NjExMDE1NjkzZTJlZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PxFlk1ox1JW4WF9Oe94Optutc7ck-WJhKlK6LklhGO4',
+			},
+		},
+	};
+};

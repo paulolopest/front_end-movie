@@ -1,0 +1,51 @@
+.modal {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.4);
+	top: 0;
+	left: 0;
+	display: flex;
+	z-index: 10000;
+	padding: 4rem 8rem;
+}
+
+.modalBackground {
+	height: 100%;
+	width: 100%;
+	border-radius: 15px;
+	opacity: 0;
+	transform: scale(0.8);
+	animation: scaleUp 0.3s forwards;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+
+	img {
+		max-width: 100%;
+		background-position: center;
+		background-size: cover;
+	}
+}
+
+@keyframes scaleUp {
+	to {
+		opacity: initial;
+		transform: initial;
+	}
+}
+
+.modalContainer {
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	border-radius: 15px;
+	height: 100%;
+	width: 100%;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(8px) brightness(0.2);
+
+	img {
+		height: 20rem;
+		width: 15rem;
+	}
+}
