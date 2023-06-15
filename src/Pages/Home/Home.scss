@@ -5,6 +5,10 @@
 }
 
 .home-left-bar {
+	display: flex;
+	height: calc(100vh - 5rem);
+	flex-direction: column;
+	justify-content: space-between;
 	transition: 0.3s ease-in-out;
 
 	nav {
@@ -61,4 +65,35 @@
 	grid-column: 2/3;
 	width: 62vw;
 	height: auto;
+}
+
+@media (max-width: 1300px) {
+	.home-container {
+		grid-template-columns: 100vw;
+	}
+
+	.mainHome-container {
+		width: 80vw;
+	}
+}
+
+@media (max-width: 900px) {
+	.mainHome-container {
+		width: 90vw;
+	}
+
+	.home-left-bar {
+		display: none;
+	}
+
+	.home-right-bar {
+		display: none;
+	}
+
+	.home-container {
+		display: flex;
+		width: 100%;
+		padding: 2rem;
+		margin: 0 auto;
+	}
 }

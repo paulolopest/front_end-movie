@@ -9,7 +9,6 @@ const MainHome = ({ setModal }) => {
 			<TrendingCard setModal={setModal} />
 			<ListContent setModal={setModal} />
 			<BestContent setModal={setModal} />
-			<ListContent setModal={setModal} />
 		</section>
 	);
 };

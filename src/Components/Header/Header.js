@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { ReactComponent as ExitIcon } from '../../Assets/Icons/log-out.svg';
 
 const Header = () => {
 	return (
@@ -8,11 +9,17 @@ const Header = () => {
 				<Link to="/">PrimeMax</Link>
 			</div>
 			<nav className="header-nav">
-				<NavLink to="/movies">Movies</NavLink>
-				<NavLink to="/series">Series</NavLink>
-				<NavLink to="/tv-shows">TV Shows</NavLink>
+				<NavLink to="/">Movies</NavLink>
+				<NavLink to="/">Series</NavLink>
+				<NavLink to="/">TV Shows</NavLink>
 			</nav>
-			<div></div>
+			<div className="headerExit">
+				{' '}
+				<a href="https://www.github.com/paulolopest" to="login">
+					<ExitIcon />
+					Exit
+				</a>
+			</div>
 		</header>
 	);
 };

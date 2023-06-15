@@ -12,7 +12,7 @@ import React, { useState } from 'react';
 import Image from '../../../../Components/Image/Image';
 import Loading from '../../../../Components/Loading/Loading';
 
-const TrendingCard = () => {
+const TrendingCard = ({ setModal }) => {
 	const [currentCard, setCurrentCard] = useState(0);
 	const [animeDirection, setAnimeDirection] = useState('');
 	const timeoutRef = React.useRef();
@@ -99,6 +99,10 @@ const TrendingCard = () => {
 		}
 	};
 
+	const onClickModal = () => {
+		setModal(topRated?.results[currentCard]);
+	};
+
 	React.useEffect(() => {
 		switch (animeDirection) {
 			case 'animeLeft':
@@ -125,10 +129,6 @@ const TrendingCard = () => {
 		}
 	};
 
-	const onClickTest = ({ target }) => {
-		console.log(target);
-	};
-
 	if (
 		getTrending.loading ||
 		getSeriesGenres.loading ||
@@ -147,18 +147,27 @@ const TrendingCard = () => {
 
 							<div className="tc-mc-mc-description">
 								<h1>{card.name}</h1>
-								<p>{card.year.slice(0, 4)}</p>
+								{/* <p>{card.year.slice(0, 4)}</p> */}
 								<p className="tc-mc-mc-d-description">
 									{limitDescription(card.description)}
 								</p>
 								<div className="tc-mc-mc-d-genres">
-									{currentCardGenres.map((movie, index) => (
-										<p key={index}>{movie}</p>
-									))}
+									{currentCardGenres
+										.map((movie, index) => <p key={index}>{movie}</p>)
+										.slice(0, 4)}
 								</div>
 								<div className="tc-mc-mc-d-buttons">
-									<button>Trailer</button>
-									<button>Details</button>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										href={`https://www.youtube.com/results?search_query=${card.name.replaceAll(
+											' ',
+											'+'
+										)} trailer`}
+									>
+										Trailer
+									</a>
+									<button onClick={onClickModal}>Details</button>
 								</div>
 							</div>
 							{currentCard >= 1 ? (

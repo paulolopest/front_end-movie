@@ -7,13 +7,13 @@ import React from 'react';
 import useAxios from '../../Hooks/useAxios';
 import Loading from './../Loading/Loading';
 import Error from './../Error/Error';
-import Image from './../Image/Image';
 
-const ContentModal = ({ movieId }) => {
+const ContentModal = ({ movieId, setModal, contentType }) => {
+	const [type, setContentType] = React.useState(GET_MOVIE_DETAILS(movieId));
 	const { data, loading, error, axiosGet } = useAxios();
 
 	React.useEffect(() => {
-		const { url, options } = GET_MOVIE_DETAILS(movieId);
+		const { url, options } = type;
 
 		axiosGet(url, options);
 	}, [movieId, axiosGet]);
@@ -22,8 +22,21 @@ const ContentModal = ({ movieId }) => {
 
 	console.log(data);
 
+	const numberToTime = (number) => {
+		const hours = Math.floor(number / 60);
+		const minutes = number % 60;
+
+		return `0${hours}:${minutes}`;
+	};
+
+	const handleClickOutside = (event) => {
+		if (event.target === event.currentTarget) {
+			setModal(null);
+		}
+	};
+
 	return (
-		<div className="modal">
+		<div onClick={handleClickOutside} className="modal">
 			{loading && <Loading />}
 			{error && <Error />}
 			{data && (
@@ -39,20 +52,36 @@ const ContentModal = ({ movieId }) => {
 								src={`${BASE_IMAGE_URL}/${data.poster_path}`}
 								alt={`${BASE_IMAGE_URL}/${data.title}' poster`}
 							/>
-							<div className="md-dateAndVote">
+							<div className="md-extraInfo">
+								<p>Release date: {data.release_date}</p>
+								<p>Duration: {numberToTime(data.runtime)}</p>
 								<p>
-									Release date:{' '}
-									{data.release_date.replaceAll('-', '/')}
+									Rate: <span>{data.vote_average.toFixed(1)}</span>
 								</p>
-								<p>{data.vote_average.toFixed(1)}</p>
+							</div>
+							<div className="officialSiteButton">
+								<a
+									target="_blank"
+									rel="noopener noreferrer"
+									href={data.homepage}
+								>
+									Official Site
+								</a>
+								<a
+									target="_blank"
+									rel="noopener noreferrer"
+									href={`https://www.youtube.com/results?search_query=${data.title} trailer`}
+								>
+									Trailer
+								</a>
 							</div>
 						</div>
 						<div className="modal-description">
 							<h1>{data.title}</h1>
 
 							<div className="md-genres">
-								{genres.map((movie) => (
-									<p>{movie}</p>
+								{genres.map((movie, index) => (
+									<p key={index}>{movie}</p>
 								))}
 							</div>
 							<p className="md-description">{data.overview}</p>

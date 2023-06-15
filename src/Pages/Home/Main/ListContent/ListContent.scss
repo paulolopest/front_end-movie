@@ -90,3 +90,24 @@
 		}
 	}
 }
+
+@media (min-width: 1800px) {
+	.lc-card {
+		height: 20rem;
+		width: 13.5rem;
+	}
+}
+
+@media (max-width: 1300px) {
+	.lc-card {
+		height: 19rem;
+		width: 12rem;
+	}
+}
+
+@media (max-width: 1200px) {
+	.lc-card {
+		height: 16rem;
+		width: 11rem;
+	}
+}

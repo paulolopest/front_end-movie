@@ -4,8 +4,9 @@ import {
 	GET_BEST_CONTENT,
 } from '../../../../RequestManager/ConfigRequests';
 import useAxios from './../../../../Hooks/useAxios';
+import BestContentCard from './BestContentCard';
 
-const BestContent = () => {
+const BestContent = ({ setModal }) => {
 	const BCAxios = useAxios();
 	const BCList = BCAxios?.data?.results.slice(1, 6);
 
@@ -15,14 +16,8 @@ const BestContent = () => {
 		BCAxios.axiosGet(url, options);
 	}, []);
 
-	const bestContentMap = BCList?.map((movie, index) => (
-		<div
-			key={index}
-			className="bc-card"
-			style={{
-				backgroundImage: `url(${BASE_IMAGE_URL}/${movie.poster_path})`,
-			}}
-		></div>
+	const bestContentMap = BCList?.map((movie) => (
+		<BestContentCard key={movie.id} movie={movie} setModal={setModal} />
 	));
 
 	if (BCList)

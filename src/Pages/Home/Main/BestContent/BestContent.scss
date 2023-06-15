@@ -44,3 +44,15 @@
 		border: 1px solid #999999;
 	}
 }
+
+@media (min-width: 1800px) {
+	.bc-card {
+		height: 35rem;
+	}
+}
+
+@media (max-width: 1300px) {
+	.bestContent {
+		max-width: inherit;
+	}
+}

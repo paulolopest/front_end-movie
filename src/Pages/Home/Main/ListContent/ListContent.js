@@ -50,6 +50,7 @@ const ListContent = ({ setModal }) => {
 				)}
 
 				{listContent}
+
 				{currentCard === 15 ? null : (
 					<span className="lc-clc-nextButton" onClick={onClickNext}>
 						<NextIcon />

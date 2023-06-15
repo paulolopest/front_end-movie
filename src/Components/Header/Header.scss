@@ -29,6 +29,22 @@ header {
 	color: #656565;
 }
 
-.header-nav a.active {
-	color: white;
+.headerExit {
+	display: flex;
+	justify-content: end;
+	padding: 0 4rem;
+	align-items: center;
+	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		color: #656565;
+
+		svg {
+			padding-right: 0.2rem;
+			height: 1rem;
+			width: 1rem;
+		}
+	}
 }
