@@ -195,112 +195,12 @@
 	}
 }
 
-@media (min-width: 1800px) {
+@media (max-width: 900px) {
 	.backCardImage {
-		width: 65%;
-		height: 26rem;
-	}
-
-	.backCardImage2 {
-		height: 26rem;
-	}
-
-	.tc-mc-mainCard {
-		width: 100%;
-		height: 26rem;
-		gap: 2.5rem;
-
-		h1 {
-			font-size: 2.3rem;
-		}
-
-		img {
-			max-width: 16rem;
-		}
-
-		.tc-mc-mc-d-description {
-			font-size: 1.1rem;
-		}
-
-		.tc-mc-mc-d-genres {
-			gap: 0 0.6rem;
-
-			p {
-				padding: 0.5rem 0.7rem;
-				font-size: 0.8rem;
-			}
-		}
-
-		.tc-mc-mc-d-buttons {
-			a,
-			button {
-				padding: 1rem 1.8rem;
-			}
-		}
-	}
-
-	.tc-mc-miniCard {
-		height: 26rem;
-		width: 20rem;
+		height: 100vh;
 	}
 }
 
-@media (max-width: 1500px) {
-	.backCardImage {
-		width: 65%;
-	}
-
-	.tc-mc-mainCard {
-		width: 100%;
-	}
-}
-@media (max-width: 1300px) {
-	.backCardImage {
-		width: 65%;
-		height: 23.5rem;
-	}
-
-	.backCardImage2 {
-		height: 23.5rem;
-	}
-
-	.tc-mc-mainCard {
-		height: 23.5rem;
-
-		h1 {
-			font-size: 2rem;
-		}
-
-		img {
-			max-width: 14rem;
-		}
-
-		.tc-mc-mc-d-description {
-			font-size: 1rem;
-		}
-
-		.tc-mc-mc-d-genres {
-			gap: 0 0.6rem;
-
-			p {
-				padding: 0.5rem 0.7rem;
-				font-size: 0.8rem;
-			}
-		}
-
-		.tc-mc-mc-d-buttons {
-			a,
-			button {
-				padding: 1rem 1.8rem;
-			}
-		}
-	}
-
-	.tc-mc-miniCard {
-		height: 23.5rem;
-		width: 20rem;
-	}
-}
 @media (max-width: 1200px) {
 	.backCardImage {
 		width: 65%;
@@ -370,79 +270,111 @@
 		width: 18rem;
 	}
 }
-@media (max-width: 900px) {
+
+@media (max-width: 1300px) {
 	.backCardImage {
-		width: 70%;
-		height: 15rem;
+		width: 65%;
+		height: 23.5rem;
 	}
 
 	.backCardImage2 {
-		height: 15rem;
+		height: 23.5rem;
+	}
+
+	.tc-mc-mainCard {
+		height: 23.5rem;
+
+		h1 {
+			font-size: 2rem;
+		}
+
+		img {
+			max-width: 14rem;
+		}
+
+		.tc-mc-mc-d-description {
+			font-size: 1rem;
+		}
+
+		.tc-mc-mc-d-genres {
+			gap: 0 0.6rem;
+
+			p {
+				padding: 0.5rem 0.7rem;
+				font-size: 0.8rem;
+			}
+		}
+
+		.tc-mc-mc-d-buttons {
+			a,
+			button {
+				padding: 1rem 1.8rem;
+			}
+		}
+	}
+
+	.tc-mc-miniCard {
+		height: 23.5rem;
+		width: 20rem;
+	}
+}
+
+@media (max-width: 1500px) {
+	.backCardImage {
+		width: 65%;
 	}
 
 	.tc-mc-mainCard {
 		width: 100%;
-		height: 15rem;
-		padding: 0.8rem 1.5rem;
+	}
+}
+
+@media (min-width: 1800px) {
+	.backCardImage {
+		width: 65%;
+		height: 26rem;
+	}
+
+	.backCardImage2 {
+		height: 26rem;
+	}
+
+	.tc-mc-mainCard {
+		width: 100%;
+		height: 26rem;
+		gap: 2.5rem;
 
 		h1 {
-			font-size: 1.4rem;
+			font-size: 2.3rem;
 		}
 
 		img {
-			max-width: 9rem;
-		}
-	}
-
-	.tc-mc-mc-description {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		height: 90%;
-
-		h1,
-		p,
-		div {
-			margin-top: auto;
-		}
-
-		h1 {
-			padding: 0;
+			max-width: 16rem;
 		}
 
 		.tc-mc-mc-d-description {
-			font-size: 0.7rem;
+			font-size: 1.1rem;
 		}
-	}
 
-	.tc-mc-mc-d-genres {
-		display: flex;
+		.tc-mc-mc-d-genres {
+			gap: 0 0.6rem;
 
-		scale: (0.7);
-	}
+			p {
+				padding: 0.5rem 0.7rem;
+				font-size: 0.8rem;
+			}
+		}
 
-	.tc-mc-mc-d-buttons {
-		display: flex;
-		gap: 0 2rem;
-
-		scale: (0.5);
+		.tc-mc-mc-d-buttons {
+			a,
+			button {
+				padding: 1rem 1.8rem;
+			}
+		}
 	}
 
 	.tc-mc-miniCard {
-		height: 15rem;
-		width: 11rem;
-
-		img {
-			max-width: 100%;
-		}
+		height: 26rem;
+		width: 20rem;
 	}
-}
-
-.dksodkos {
-}
-.dksodkos {
-}
-.dksodkos {
-}
-.dksodkos {
 }
